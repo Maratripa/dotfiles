@@ -4,7 +4,7 @@ local apps = {
     default = {
         terminal = "alacritty",
         editor = "code-insiders",
-        browser = "firefox",
+        browser = "firefox-developer-edition",
         files = "thunar"
     },
 
