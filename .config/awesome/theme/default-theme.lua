@@ -56,20 +56,32 @@ local awesome_overrides = function (theme)
     -- theme.layout_tile = theme.icons .. "layouts/view-quilt.png"
 
     -- Taglist
-    theme.taglist_bg_empty = theme.bg.base
-    theme.taglist_bg_occupied = theme.bg.base
-    theme.taglist_bg_urgent =
-        "linear:0,0:0," .. dpi(48) .. ":0," ..
-        theme.colors.red .. ":0.07," ..
-        theme.colors.red .. ":0.07," ..
-        theme.bg.base .. ":1," ..
-        theme.bg.base
-    theme.taglist_bg_focus =
-        "linear:0,0:0," .. dpi(32) .. ":0," ..
-        theme.bg.base .. ":1," ..
-        theme.bg.base .. ":1," ..
-        theme.bg.base .. ":1," ..
-        theme.colors.lavender
+    theme.taglist_bg = theme.bg.base
+    -- theme.taglist_bg_occupied = theme.bg.base
+    theme.taglist_bg_urgent = theme.taglist_bg
+        -- "linear:0,0:0," .. dpi(48) .. ":0," ..
+        -- theme.colors.red .. ":0.07," ..
+        -- theme.colors.red .. ":0.07," ..
+        -- theme.bg.base .. ":1," ..
+        -- theme.bg.base
+    -- theme.taglist_bg_focus =
+    --     "linear:0,0:0," .. dpi(32) .. ":0," ..
+    --     theme.bg.base .. ":1," ..
+    --     theme.bg.base .. ":1," ..
+    --     theme.bg.base .. ":1," ..
+    --     theme.colors.lavender
+    
+    -- Taglist icons
+    theme.normal_tag_format = theme.icons .. "taglist/circle.svg"
+    theme.occupied_tag_format = theme.normal_tag_format
+    theme.selected_tag_format = theme.icons .. "taglist/hexagon.svg"
+
+    -- Taglist foreground
+    theme.taglist_fg_focus = theme.colors.green
+    theme.taglist_fg = theme.fg.overlay0
+    theme.taglist_fg_occupied = theme.fg.text
+
+
     
     -- Tasklist
     theme.tasklist_font = "Iosevka SS14 Regular 12"

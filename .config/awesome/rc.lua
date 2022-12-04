@@ -7,7 +7,7 @@ local beautiful = require("beautiful")
 beautiful.init(require("theme"))
 
 -- Layout
-require("layout")
+require("ui")
 
 -- Init all modules
 require("module.notifications")
