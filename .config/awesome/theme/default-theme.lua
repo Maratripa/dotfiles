@@ -10,7 +10,7 @@ local theme = {}
 theme.icons = theme_dir .. "/icons/"
 theme.font = "Iosevka SS14 Regular 12"
 
-theme.wallpaper = os.getenv("HOME") .. "/Pictures/Wallpapers/jellyfish.png"
+theme.wallpaper = os.getenv("HOME") .. "/Pictures/Wallpapers/drowning_in_space.jpg"
 
 theme.colors = catppuccin.colors
 theme.fg = catppuccin.fg
@@ -40,6 +40,7 @@ local awesome_overrides = function (theme)
     theme.border_focus = theme.colors.lavender
     theme.border_marked = theme.bg.surface1
     theme.useless_gap = dpi(5)
+    theme.border_radius = dpi(10)
 
     -- Menu
     theme.menu_height = dpi(16)

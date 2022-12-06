@@ -32,7 +32,7 @@ local function worker(user_args)
     local margin_left = args.margin_left or 0
     local margin_right = args.margin_right or 0
 
-    local display_notification = args.display_notification or true
+    local display_notification = args.display_notification or false
     local display_notification_onClick = args.display_notification_onClick or true
     local position = args.notification_position or "top_right"
     local timeout = args.timeout or 10
@@ -190,7 +190,7 @@ local function worker(user_args)
         battery_widget:connect_signal("mouse::leave", function() naughty.destroy(notification) end)
     elseif display_notification_onClick then
         battery_widget:connect_signal("button::press", function(_,_,_,button)
-            if (button == 3) then show_battery_status(batteryType) end
+            if (button == 1) then show_battery_status(batteryType) end
         end)
         battery_widget:connect_signal("mouse::leave", function() naughty.destroy(notification) end)
     end

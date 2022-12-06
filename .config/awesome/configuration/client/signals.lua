@@ -1,5 +1,6 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
+local gears = require("gears")
 
 -- Signal function to execute when a new client appears.
 _G.client.connect_signal(
@@ -9,6 +10,11 @@ _G.client.connect_signal(
             not c.size_program_position then
             -- Prevent clients from being unreachable after screen count changes.
             awful.placement.no_offscreen(c)
+        end
+        
+        -- rounded corners
+        c.shape = function (cr, w, h)
+            gears.shape.rounded_rect(cr, w, h, beautiful.border_radius)
         end
     end
 )
