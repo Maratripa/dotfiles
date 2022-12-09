@@ -77,7 +77,26 @@ local globalKeys = gears.table.join(
 
     -- Xrandr
     awful.key({mod}, "p", xrandr.toggle_primary,
-       {description = "Toggle primary monitor", group = "xrandr"})
+       {description = "Toggle primary monitor", group = "xrandr"}),
+
+    -- Media keys
+    awful.key({}, "XF86AudioMute",
+        function()
+            awful.spawn.with_shell("pactl set-sink-mute @DEFAULT_SINK@ toggle")
+        end,
+        {description="(un)mute volume", group="media"}),
+    awful.key({}, "XF86AudioLowerVolume",
+        function()
+            awful.spawn.with_shell("pactl set-sink-mute @DEFAULT_SINK@ 0 && " ..
+                "pactl set-sink-volume @DEFAULT_SINK@ -5%")
+        end,
+        {description="Lower volume", group="media"}),
+    awful.key({}, "XF86AudioRaiseVolume",
+        function()
+            awful.spawn.with_shell("pactl set-sink-mute @DEFAULT_SINK@ 0 && " ..
+                "pactl set-sink-volume @DEFAULT_SINK@ +5%")
+        end,
+        {description="Raise volume", group="media"})
 )
 
 for i = 1, 9 do
