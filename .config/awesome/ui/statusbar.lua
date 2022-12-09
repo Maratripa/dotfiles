@@ -1,5 +1,6 @@
 local beautiful = require("beautiful")
 local wibox = require("wibox")
+local battery_widget = require("widget.battery")
 
 local dpi = require('beautiful').xresources.apply_dpi
 
@@ -17,8 +18,8 @@ local TopPanel = function (s, offset)
         ontop = false,
         screen = s,
         height = dpi(36),
-        width = dpi(128),
-        x = s.geometry.x + s.geometry.width - dpi(318),
+        width = dpi(138),
+        x = s.geometry.x + s.geometry.width - dpi(328),
         y = s.geometry.y + offsety,
         stretch = false,
         bg = beautiful.bg.base,
@@ -28,8 +29,8 @@ local TopPanel = function (s, offset)
 
     panel:setup{
         layout = wibox.layout.align.horizontal,
+        wibox.container.margin(battery_widget, dpi(4), dpi(4), dpi(4), dpi(4)),
         wibox.container.margin(systray, dpi(4), dpi(4), dpi(4), dpi(4)),
-        require("widget.battery")(),
         -- require('widget.battery')
     }
 

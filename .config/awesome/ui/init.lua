@@ -1,13 +1,13 @@
 local awful = require('awful')
 
 local taglist = require("ui.taglist")
-local systemtray_panel = require("ui.systemtray-panel")
+local statusbar = require("ui.statusbar")
 local datetime_panel = require("ui.datetime-panel")
 
 -- Create a wibox for each screen and add it
 awful.screen.connect_for_each_screen(function (s)
     s.taglist = taglist(s, true)
-    s.systemtray_panel = systemtray_panel(s, true)
+    s.statusbar = statusbar(s, true)
     s.datetime_panel = datetime_panel(s, true)
 end)
 
@@ -17,7 +17,7 @@ local updateBarsVisibility = function ()
         if s.selected_tag then
             local fullscreen = s.selected_tag.fullscreenMode
             s.taglist.visible = not fullscreen
-            s.systemtray_panel.visible = not fullscreen
+            s.statusbar.visible = not fullscreen
             s.datetime_panel.visible = not fullscreen
         end
     end
