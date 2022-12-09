@@ -6,6 +6,7 @@ require("awful.autofocus")
 
 local apps = require("configuration.apps")
 local xrandr = require("module.xrandr")
+local helpers = require("helpers")
 
 local mod = require('configuration.keys.mod').modKey
 local shift = "Shift"
@@ -78,6 +79,11 @@ local globalKeys = gears.table.join(
     -- Xrandr
     awful.key({mod}, "p", xrandr.toggle_primary,
        {description = "Toggle primary monitor", group = "xrandr"}),
+    
+    -- Keyboard layout
+    awful.key({mod}, 'space', function ()
+        helpers.toggle_kb_layout()
+    end),
 
     -- Media keys
     awful.key({}, "XF86AudioMute",
