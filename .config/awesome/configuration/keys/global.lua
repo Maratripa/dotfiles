@@ -102,7 +102,23 @@ local globalKeys = gears.table.join(
             awful.spawn.with_shell("pactl set-sink-mute @DEFAULT_SINK@ 0 && " ..
                 "pactl set-sink-volume @DEFAULT_SINK@ +5%")
         end,
-        {description="Raise volume", group="media"})
+        {description="Raise volume", group="media"}),
+    
+    awful.key({}, "XF86AudioPlay",
+        function ()
+            awful.spawn.with_shell("playerctl play-pause")
+        end,
+        {description="Play-pause", group="media"}),
+    awful.key({}, "XF86AudioPrev",
+        function ()
+            awful.spawn.with_shell("playerctl previous")
+        end,
+        {description="Previous track", group="media"}),
+    awful.key({}, "XF86AudioNext",
+        function ()
+            awful.spawn.with_shell("playerctl next")
+        end,
+        {description="Next track", group="media"})
 )
 
 for i = 1, 9 do
