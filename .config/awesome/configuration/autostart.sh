@@ -12,3 +12,4 @@ function exe () {
 exe picom --config ~/.config/picom/picom.conf -b
 exe nm-applet --indicator
 exe blueman-applet
+exe thunar --daemon
