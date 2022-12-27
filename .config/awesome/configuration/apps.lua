@@ -5,7 +5,8 @@ local apps = {
         terminal = "wezterm",
         editor = "code-insiders",
         browser = "firefox-developer-edition",
-        files = "thunar"
+        files = "thunar",
+        launcher = "rofi -show drun",
     },
 
     run_on_start_up = {

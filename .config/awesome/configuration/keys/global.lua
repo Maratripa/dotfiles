@@ -76,8 +76,8 @@ local globalKeys = gears.table.join(
         {description = "Quit awesome", group = "awesome"}),
     
     -- Menubar TODO
-    awful.key({mod}, "d", function () menubar.show() end,
-        {description = "Show the menubar", group = "launcher"}),
+    awful.key({mod}, "d", function () awful.spawn(apps.default.launcher) end,
+        {description = "Start launcher", group = "launcher"}),
 
     -- Xrandr
     awful.key({mod}, "p", xrandr.toggle_primary,
