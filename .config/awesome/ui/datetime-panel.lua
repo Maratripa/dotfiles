@@ -4,13 +4,13 @@ local wibox = require('wibox')
 local dpi = require('beautiful').xresources.apply_dpi
 
 local textdate = wibox.widget.textclock(
-                      '<span font="Iosevka SS14 Bold 12">%d.%m.%Y</span>')
+                      '<span font="Iosevka Bold 12">%d.%m.%Y</span>')
 
 local date_widget = wibox.container.margin(textdate, dpi(8), dpi(8), dpi(8),
                                            dpi(8))
 
 local textclock = wibox.widget.textclock(
-                        '<span font="Iosevka SS14 Bold 12">%H:%M</span>')
+                        '<span font="Iosevka Bold 12">%H:%M</span>')
 
 local clock_widget = wibox.container.margin(textclock, dpi(8), dpi(8), dpi(8),
                                             dpi(8))

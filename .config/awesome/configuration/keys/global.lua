@@ -57,6 +57,9 @@ local globalKeys = gears.table.join(
             end
         end,
         {description = "Go back", group = "client"}),
+
+    awful.key({mod, shift}, "space", function () awful.layout.inc(1) end,
+        {description = "Select next layout", group = "layout"}),
     
     -- Standard program
     awful.key({mod}, "Return", function () awful.spawn(apps.default.terminal) end,

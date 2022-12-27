@@ -8,7 +8,7 @@ local dpi = require('beautiful').xresources.apply_dpi
 local theme = {}
 
 theme.icons = theme_dir .. "/icons/"
-theme.font = "Iosevka SS14 Regular 12"
+theme.font = "Iosevka Regular 12"
 
 theme.wallpaper = os.getenv("HOME") .. "/Pictures/Wallpapers/drowning_in_space.jpg"
 
@@ -20,8 +20,8 @@ local awesome_overrides = function (theme)
     theme.dir = os.getenv("HOME") .. "/.config/awesome/theme"
 
     theme.icons = theme.dir .. "/icons/"
-    theme.font = "Iosevka SS14 Regular 12"
-    theme.title_font = "Iosevka SS14 Regular 14"
+    theme.font = "Iosevka Regular 12"
+    theme.title_font = "Iosevka Regular 14"
 
     theme.fg_normal = "#ffffffde"
 
@@ -85,7 +85,7 @@ local awesome_overrides = function (theme)
 
     
     -- Tasklist
-    theme.tasklist_font = "Iosevka SS14 Regular 12"
+    theme.tasklist_font = "Iosevka Regular 12"
     theme.tasklist_bg_normal = theme.bg.base
     theme.tasklist_bg_focus =
         "linear:0,0:0,".. dpi(32) .. ":0," ..

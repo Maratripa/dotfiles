@@ -26,7 +26,7 @@ local battery_widget = {}
 local function worker(user_args)
     local args = user_args or {}
 
-    local font = args.font or 'Iosevka SS14 Bold 12'
+    local font = args.font or 'Iosevka Bold 12'
     local path_to_icons = args.path_to_icons or HOME .. "/.config/awesome/theme/icons/battery/"
     local show_current_level = args.show_current_level or true
     local margin_left = args.margin_left or 0

@@ -2,7 +2,7 @@ local menubar = require("menubar")
 
 local apps = {
     default = {
-        terminal = "alacritty",
+        terminal = "xterm",
         editor = "code-insiders",
         browser = "firefox-developer-edition",
         files = "thunar"
