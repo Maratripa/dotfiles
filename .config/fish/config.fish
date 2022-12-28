@@ -2,6 +2,10 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+# Path
+
+set PATH $HOME/.cargo/bin $PATH
+
 # Alias
 
 # ls -> exa
@@ -23,5 +27,3 @@ abbr -a -g mkdir "mkdir -pv"
 
 # ls
 abbr -a -g ls "exa -1 --icons"
-
-
