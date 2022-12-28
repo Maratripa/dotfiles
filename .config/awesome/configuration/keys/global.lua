@@ -7,6 +7,7 @@ require("awful.autofocus")
 local apps = require("configuration.apps")
 local xrandr = require("module.xrandr")
 local helpers = require("helpers")
+local scripts = require("scripts")
 
 local mod = require('configuration.keys.mod').modKey
 local shift = "Shift"
@@ -85,8 +86,13 @@ local globalKeys = gears.table.join(
     
     -- Keyboard layout
     awful.key({mod}, 'space', function ()
-        helpers.toggle_kb_layout()
-    end),
+            helpers.toggle_kb_layout()
+        end),
+
+    -- Screenshot
+    awful.key({mod, shift}, "s", function ()
+            awful.spawn.with_shell(scripts.screenshot)
+        end),
 
     -- Media keys
     awful.key({}, "XF86AudioMute",
