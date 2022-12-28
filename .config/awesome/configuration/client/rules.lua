@@ -14,7 +14,6 @@ awful.rules.rules = {
             buttons = client_buttons,
             screen = awful.screen.preferred,
             placement = awful.placement.no_offscreen + awful.placement.no_overlap,
-            maximized = false,
         }
     },
 
