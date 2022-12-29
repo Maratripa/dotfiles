@@ -35,5 +35,5 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 xrandr --setprovideroutputsource modesetting NVIDIA-0 &
-xrandr --output eDP-1 --auto --output DP-1-0 --auto --primary --left-of eDP-1 &
+exec $HOME/.xrandr &
 exec awesome
