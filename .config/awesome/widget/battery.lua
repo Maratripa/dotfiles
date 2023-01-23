@@ -28,7 +28,7 @@ local function worker(user_args)
 
     local font = args.font or 'Iosevka Bold 12'
     local path_to_icons = args.path_to_icons or HOME .. "/.config/awesome/theme/icons/battery/"
-    local show_current_level = args.show_current_level or true
+    local show_current_level = args.show_current_level or false
     local margin_left = args.margin_left or 0
     local margin_right = args.margin_right or 0
 

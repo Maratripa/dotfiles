@@ -14,136 +14,142 @@ local shift = "Shift"
 local control = "Control"
 
 local globalKeys = gears.table.join(
-    -- Hotkeys
-    awful.key({mod}, "h", hotkeys_popup.show_help,
-        {description = "Show help", group = "awesome"}),
-    
+-- Hotkeys
+    awful.key({ mod }, "h", hotkeys_popup.show_help,
+        { description = "Show help", group = "awesome" }),
+
     -- Tag browsing
-    awful.key({mod}, "Left", awful.tag.viewprev,
-        {description = "View previous", group = "tag"}),
-    awful.key({mod}, "Right", awful.tag.viewnext,
-        {description = "View next", group = "tag"}),
-    awful.key({mod}, "Escape", awful.tag.history.restore,
-        {description = "Go back", group = "tag"}),
-    
+    awful.key({ mod }, "Left", awful.tag.viewprev,
+        { description = "View previous", group = "tag" }),
+    awful.key({ mod }, "Right", awful.tag.viewnext,
+        { description = "View next", group = "tag" }),
+    awful.key({ mod }, "Escape", awful.tag.history.restore,
+        { description = "Go back", group = "tag" }),
+
     -- Client
-    awful.key({mod, shift}, "Right", function () awful.client.focus.byidx(1) end,
-        {description = "Focus next by index", group = "client"}),
-    awful.key({mod, shift}, "Left", function () awful.client.focus.byidx(-1) end,
-        {description = "Focus previous by index", group = "client"}),
+    awful.key({ mod, shift }, "Right", function() awful.client.focus.byidx(1) end,
+        { description = "Focus next by index", group = "client" }),
+    awful.key({ mod, shift }, "Left", function() awful.client.focus.byidx(-1) end,
+        { description = "Focus previous by index", group = "client" }),
     awful.key({ mod, control }, "n",
-        function ()
+        function()
             local c = awful.client.restore()
             -- Focus restored client
             if c then
-              c:activate { raise = true, context = "key.unminimize" }
+                c:activate { raise = true, context = "key.unminimize" }
             end
         end,
-        {description = "Restore minimized", group = "client"}),
-    
+        { description = "Restore minimized", group = "client" }),
+
     -- Layout manipulation
-    awful.key({mod}, "Up", function () awful.client.swap.byidx(1) end,
-        {description = "Swap with next client by index", group = "client"}),
-    awful.key({mod}, "Down", function () awful.client.swap.byidx(-1) end,
-        {description = "Swap with previous client by index", group = "client"}),
-    
-    awful.key({mod, control}, "o", function () awful.screen.focus_relative(1) end,
-        {description = "Focus the next screen", group = "client"}),
-    
-    awful.key({mod}, "Tab",
-        function ()
+    awful.key({ mod }, "Up", function() awful.client.swap.byidx(1) end,
+        { description = "Swap with next client by index", group = "client" }),
+    awful.key({ mod }, "Down", function() awful.client.swap.byidx(-1) end,
+        { description = "Swap with previous client by index", group = "client" }),
+
+    awful.key({ mod, control }, "o", function() awful.screen.focus_relative(1) end,
+        { description = "Focus the next screen", group = "client" }),
+
+    awful.key({ mod }, "Tab",
+        function()
             awful.client.focus.history.previous()
             if _G.client.focus then
                 _G.client.focus:raise()
             end
         end,
-        {description = "Go back", group = "client"}),
+        { description = "Go back", group = "client" }),
 
-    awful.key({mod, shift}, "space", function () awful.layout.inc(1) end,
-        {description = "Select next layout", group = "layout"}),
-    
+    awful.key({ mod, shift }, "space", function() awful.layout.inc(1) end,
+        { description = "Select next layout", group = "layout" }),
+
     -- Standard program
-    awful.key({mod}, "Return", function () awful.spawn(apps.default.terminal) end,
-        {description = "Open a terminal", group = "launcher"}),
-    awful.key({mod}, "b", function () awful.spawn(apps.default.browser) end,
-        {description = "Open default browser", group = "launcher"}),
-    awful.key({mod}, "n", function () awful.spawn(apps.default.files) end,
-        {description = "Open default file manager", group = "launcher"}),
-    
+    awful.key({ mod }, "Return", function() awful.spawn(apps.default.terminal) end,
+        { description = "Open a terminal", group = "launcher" }),
+    awful.key({ mod }, "b", function() awful.spawn(apps.default.browser) end,
+        { description = "Open default browser", group = "launcher" }),
+    awful.key({ mod }, "n", function() awful.spawn(apps.default.files) end,
+        { description = "Open default file manager", group = "launcher" }),
+
     -- Quit and reload awesome
-    awful.key({mod, control}, "r", _G.awesome.restart,
-        {description = "Reload awesome", group = "awesome"}),
-    awful.key({mod, control}, "q", _G.awesome.quit,
-        {description = "Quit awesome", group = "awesome"}),
-    
+    awful.key({ mod, control }, "r", _G.awesome.restart,
+        { description = "Reload awesome", group = "awesome" }),
+    awful.key({ mod, control }, "q", _G.awesome.quit,
+        { description = "Quit awesome", group = "awesome" }),
+
     -- Menubar TODO
-    awful.key({mod}, "d", function () awful.spawn(apps.default.launcher) end,
-        {description = "Start launcher", group = "launcher"}),
+    awful.key({ mod }, "d", function() awful.spawn(apps.default.launcher) end,
+        { description = "Start launcher", group = "launcher" }),
 
     -- Xrandr
-    awful.key({mod}, "p", xrandr.toggle_primary,
-       {description = "Toggle primary monitor", group = "xrandr"}),
-    
+    awful.key({ mod }, "p", xrandr.toggle_primary,
+        { description = "Toggle primary monitor", group = "xrandr" }),
+
     -- Keyboard layout
-    awful.key({mod}, 'space', function ()
-            helpers.toggle_kb_layout()
-        end),
+    awful.key({ mod }, 'space', function()
+        helpers.toggle_kb_layout()
+    end),
 
     -- Screenshot
-    awful.key({mod, shift}, "s", function ()
-            awful.spawn.with_shell(scripts.screenshot)
-        end),
+    awful.key({ mod, shift }, "s", function()
+        awful.spawn.with_shell(scripts.screenshot)
+    end),
 
     -- Media keys
     awful.key({}, "XF86AudioMute",
         function()
             awful.spawn.with_shell("pactl set-sink-mute @DEFAULT_SINK@ toggle")
         end,
-        {description="(un)mute volume", group="media"}),
+        { description = "(un)mute volume", group = "media" }),
     awful.key({}, "XF86AudioLowerVolume",
         function()
             awful.spawn.with_shell("pactl set-sink-mute @DEFAULT_SINK@ 0 && " ..
                 "pactl set-sink-volume @DEFAULT_SINK@ -5%")
         end,
-        {description="Lower volume", group="media"}),
+        { description = "Lower volume", group = "media" }),
     awful.key({}, "XF86AudioRaiseVolume",
         function()
             awful.spawn.with_shell("pactl set-sink-mute @DEFAULT_SINK@ 0 && " ..
                 "pactl set-sink-volume @DEFAULT_SINK@ +5%")
         end,
-        {description="Raise volume", group="media"}),
-    
+        { description = "Raise volume", group = "media" }),
+
     awful.key({}, "XF86AudioPlay",
-        function ()
+        function()
             awful.spawn.with_shell("playerctl play-pause")
         end,
-        {description="Play-pause", group="media"}),
+        { description = "Play-pause", group = "media" }),
     awful.key({}, "XF86AudioPrev",
-        function ()
+        function()
             awful.spawn.with_shell("playerctl previous")
         end,
-        {description="Previous track", group="media"}),
+        { description = "Previous track", group = "media" }),
     awful.key({}, "XF86AudioNext",
-        function ()
+        function()
             awful.spawn.with_shell("playerctl next")
         end,
-        {description="Next track", group="media"})
+        { description = "Next track", group = "media" }),
+
+    -- Toggle powermenu
+    awful.key({ mod }, "Escape",
+        function()
+            awesome.emit_signal("powermenu::toggle")
+        end)
 )
 
 for i = 1, 9 do
     -- Hack to only show tags 1 and 9 in the shortcut window (mod+h)
     local descr_view, descr_toggle, descr_move, descr_toggle_focus
     if i == 1 or i == 9 then
-        descr_view = {description = "View tag #", group = "tag"}
-        descr_toggle = {description = "Toggle tag #", group = "tag"}
-        descr_move = {description = "Move focused client to tag #", group = "tag"}
-        descr_toggle_focus = {description = "toggle focused client on tag #", group = "tag"}
+        descr_view = { description = "View tag #", group = "tag" }
+        descr_toggle = { description = "Toggle tag #", group = "tag" }
+        descr_move = { description = "Move focused client to tag #", group = "tag" }
+        descr_toggle_focus = { description = "toggle focused client on tag #", group = "tag" }
     end
 
     globalKeys = gears.table.join(globalKeys,
         -- View tag only
-        awful.key({mod}, "#" .. i + 9,
-            function ()
+        awful.key({ mod }, "#" .. i + 9,
+            function()
                 local screen = awful.screen.focused()
                 local tag = screen.tags[i]
                 if tag then
@@ -153,8 +159,8 @@ for i = 1, 9 do
             descr_view),
 
         -- Toggle tag display
-        awful.key({mod, control}, "#" .. i + 9,
-            function ()
+        awful.key({ mod, control }, "#" .. i + 9,
+            function()
                 local screen = awful.screen.focused()
                 local tag = screen.tags[i]
                 if tag then
@@ -163,8 +169,8 @@ for i = 1, 9 do
             end,
             descr_toggle),
         -- Move client to tag and switch to tag
-        awful.key({mod, shift}, "#" .. i + 9,
-            function ()
+        awful.key({ mod, shift }, "#" .. i + 9,
+            function()
                 if _G.client.focus then
                     local tag = _G.client.focus.screen.tags[i]
                     if tag then
@@ -175,8 +181,8 @@ for i = 1, 9 do
             end,
             descr_move),
         -- Toggle tag on focused client
-        awful.key({mod, control, shift}, "#" .. i + 9,
-            function ()
+        awful.key({ mod, control, shift }, "#" .. i + 9,
+            function()
                 if _G.client.focus then
                     local tag = _G.client.focus.screen.tags[i]
                     if tag then

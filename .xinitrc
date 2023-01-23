@@ -6,6 +6,7 @@ sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
 export QT_QPA_PLATFORMTHEME=gtk2
+export NVD_BACKEND=direct
 
 # merge in defaults and keymaps
 

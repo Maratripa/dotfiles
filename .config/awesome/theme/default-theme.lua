@@ -10,7 +10,7 @@ local theme = {}
 theme.icons = theme_dir .. "/icons/"
 theme.font = "Iosevka Regular 12"
 
-theme.wallpaper = os.getenv("HOME") .. "/Pictures/Wallpapers/drowning_in_space.jpg"
+theme.wallpaper = os.getenv("HOME") .. "/Pictures/Wallpapers/freefall.jpg"
 
 theme.colors = catppuccin.colors
 theme.fg = catppuccin.fg
@@ -19,8 +19,11 @@ theme.bg = catppuccin.bg
 local awesome_overrides = function (theme)
     theme.dir = os.getenv("HOME") .. "/.config/awesome/theme"
 
+    theme.pfp = theme.dir .. "/pfp.jpg"
+
     theme.icons = theme.dir .. "/icons/"
     theme.font = "Iosevka Regular 12"
+    theme.font_name = "Iosevka Regular"
     theme.title_font = "Iosevka Regular 14"
 
     theme.fg_normal = "#ffffffde"
@@ -81,8 +84,6 @@ local awesome_overrides = function (theme)
     theme.taglist_fg_focus = theme.colors.green
     theme.taglist_fg = theme.fg.overlay0
     theme.taglist_fg_occupied = theme.fg.text
-
-
     
     -- Tasklist
     theme.tasklist_font = "Iosevka Regular 12"
@@ -97,6 +98,9 @@ local awesome_overrides = function (theme)
     theme.tasklist_fg_focus = theme.fg_focus
     theme.tasklist_fg_urgent = theme.fg_urgent
     theme.tasklist_fg_normal = theme.fg_normal
+
+    -- Systray
+    theme.systray_icon_spacing = dpi(6)
 end
 
 return {

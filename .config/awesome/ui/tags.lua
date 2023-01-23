@@ -81,8 +81,8 @@ local get_taglist = function(s)
                 shape = gears.shape.circle,
             },
             id = "",
+            right = 10,
             widget = wibox.container.margin,
-            left = 15,
             update_callback = function (self, _, index)
                 update_tags(self, index, s)
             end,

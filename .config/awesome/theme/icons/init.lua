@@ -11,6 +11,8 @@ return {
     music = dir .. '/music.svg',
     game = dir .. '/google-controller.svg',
     lab = dir .. '/flask.svg',
+    -- tray
+    tray_chevron_up = dir .. '/',
     -- others
     menu = dir .. '/dashboard.svg',
     close = dir .. '/close.svg',

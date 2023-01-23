@@ -21,17 +21,23 @@ awful.rules.rules = {
     {
         rule_any = {
             class = {
-                "Blueman-manager"
+                "Blueman-manager",
+                "GitHub.UI"
             },
             role = {
                 "pop-up"
             }
         },
-        properties = {floating = true}
+        properties = { floating = true }
     },
 
     {
-        rule_any = {type = {"normal", "dialog"}},
-        properties = {titlebars_enabled = false}
-    }
+        rule_any = { type = { "normal", "dialog" } },
+        properties = { titlebars_enabled = false }
+    },
+
+    {
+        rule_any = { class = { "steam" } },
+        properties = { floating = true }
+    },
 }
