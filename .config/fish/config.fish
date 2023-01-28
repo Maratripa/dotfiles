@@ -6,6 +6,9 @@ end
 
 set PATH $HOME/.cargo/bin $PATH
 
+# Zoxide
+zoxide init fish | source
+
 # Alias
 
 # ls -> exa
@@ -15,6 +18,14 @@ if type -q exa
     alias ld 'exa -l -a -h --list-dirs --no-user'
     alias ll 'exa -l -a -h --git --no-user'
     alias lt='exa -a --no-user --tree --level'
+end
+
+if type -q bat
+    alias cat 'bat'
+end
+
+if type -q btm
+    alias btm 'btm --battery'
 end
 
 # Abbr
