@@ -28,6 +28,10 @@ if type -q btm
     alias btm 'btm --battery'
 end
 
+if type -q z
+    alias cd 'z'
+end
+
 # Abbr
 
 # git 
