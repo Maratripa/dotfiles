@@ -16,3 +16,6 @@ mode.select = "SELECT"
 normal = "block"
 insert = "bar"
 select = "block"
+
+[editor.lsp]
+display-signature-help-docs = false
