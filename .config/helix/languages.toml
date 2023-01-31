@@ -22,3 +22,45 @@ checkOnSave = { command = "clippy" }
 [[grammar]]
 name = "rust"
 source = { git = "https://github.com/tree-sitter/tree-sitter-rust", rev = "0431a2c60828731f27491ee9fdefe25e250ce9c9" }
+
+[[language]]
+name = "toml"
+scope = "source.toml"
+injection-regex = "toml"
+file-types = ["toml"]
+roots = []
+comment-token = "#"
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "toml"
+source = { git = "https://github.com/ikatyang/tree-sitter-toml", rev = "7cff70bbcbbc62001b465603ca1ea88edd668704" }
+
+[[language]]
+name = "lua"
+scope = "source.lua"
+injection-regex = "lua"
+file-types = ["lua"]
+language-server = { command = "lua-language-server", args = [] }
+auto-format = true
+comment-token = "--"
+indent = { tab-width = 4, unit = "    " }
+
+[[grammar]]
+name = "lua"
+source = { git = "https://github.com/MunifTanjim/tree-sitter-lua", rev = "887dfd4e83c469300c279314ff1619b1d0b85b91" }
+
+[[language]]
+name = "python"
+scope = "source.python"
+injection-regex = "python"
+file-types = ["py", "pyi", "py3", "pyw", "ptl", ".pythonstartup", ".pythonrc", "SConstruct"]
+shebangs = ["python"]
+roots = []
+comment-token = "#"
+language-server = { command = "pylsp" }
+indent = { tab-width = 4, unit = "    " }
+
+[[grammar]]
+name = "python"
+source = { git = "https://github.com/tree-sitter/tree-sitter-python", rev = "de221eccf9a221f5b85474a553474a69b4b5784d" }
