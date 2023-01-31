@@ -5,6 +5,7 @@ end
 # Path
 
 set PATH $HOME/.cargo/bin $PATH
+set PATH $HOME/.local/bin $PATH
 
 # Zoxide
 zoxide init fish | source
