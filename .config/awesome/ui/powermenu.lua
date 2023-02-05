@@ -105,11 +105,11 @@ local powerbuttons = wibox.widget {
             return wibox.widget {
                 {
                     {
-                    image = beautiful.icons .. "power/shutdown.svg",
-                    forced_height = size,
-                    forced_width = size,
-                    align = align,
-                    widget = wibox.widget.imagebox,
+                        image = beautiful.icons .. "power/shutdown.svg",
+                        forced_height = size,
+                        forced_width = size,
+                        align = align,
+                        widget = wibox.widget.imagebox,
                     },
                     margins = dpi(4),
                     widget = wibox.container.margin,
@@ -127,11 +127,11 @@ local powerbuttons = wibox.widget {
             return wibox.widget {
                 {
                     {
-                    image = beautiful.icons .. "power/reboot.svg",
-                    align = align,
-                    forced_height = size,
-                    forced_width = size,
-                    widget = wibox.widget.imagebox,
+                        image = beautiful.icons .. "power/reboot.svg",
+                        align = align,
+                        forced_height = size,
+                        forced_width = size,
+                        widget = wibox.widget.imagebox,
                     },
                     margins = dpi(4),
                     widget = wibox.container.margin,
@@ -149,11 +149,11 @@ local powerbuttons = wibox.widget {
             return wibox.widget {
                 {
                     {
-                    image = beautiful.icons .. "power/logout.svg",
-                    align = align,
-                    forced_height = size,
-                    forced_width = size,
-                    widget = wibox.widget.imagebox,
+                        image = beautiful.icons .. "power/logout.svg",
+                        align = align,
+                        forced_height = size,
+                        forced_width = size,
+                        widget = wibox.widget.imagebox,
                     },
                     margins = dpi(4),
                     widget = wibox.container.margin,
@@ -171,11 +171,11 @@ local powerbuttons = wibox.widget {
             return wibox.widget {
                 {
                     {
-                    image = beautiful.icons .. "power/close.svg",
-                    align = align,
-                    forced_height = size,
-                    forced_width = size,
-                    widget = wibox.widget.imagebox,
+                        image = beautiful.icons .. "power/close.svg",
+                        align = align,
+                        forced_height = size,
+                        forced_width = size,
+                        widget = wibox.widget.imagebox,
                     },
                     margins = dpi(4),
                     widget = wibox.container.margin,

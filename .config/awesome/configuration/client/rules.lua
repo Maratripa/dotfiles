@@ -22,7 +22,8 @@ awful.rules.rules = {
         rule_any = {
             class = {
                 "Blueman-manager",
-                "GitHub.UI"
+                "GitHub.UI",
+                "qemu"
             },
             role = {
                 "pop-up"

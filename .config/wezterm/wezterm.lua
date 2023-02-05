@@ -1,4 +1,4 @@
-local wezterm = require("wezterm")
+local wezterm = require('wezterm')
 
 local function window_padding(margins)
 	return {
@@ -9,14 +9,29 @@ local function window_padding(margins)
 	}
 end
 
-return {
-    -- Appearance
-    font = wezterm.font "JetBrains Mono",
-    line_height = 1.1,
-    enable_tab_bar = false,
-    color_scheme = "Catppuccin Mocha",
-    window_padding = window_padding(20),
+local scheme = wezterm.get_builtin_color_schemes()['Catppuccin Mocha']
+scheme.background = '#11111b'
 
-    -- Scrollback
-    scrollback_lines = 3500,
+return {
+	-- OpenGl for GPU acceleration, Software for CPU
+	-- front_end = 'OpenGL',
+	-- Appearance
+	enable_tab_bar = false,
+	window_padding = window_padding(20),
+
+	color_schemes = {
+		['Catppuccin Mocha'] = scheme,
+	},
+	color_scheme = 'Catppuccin Mocha',
+
+	-- Font
+	font = wezterm.font 'JetBrains Mono',
+	font_size = 11,
+	line_height = 1.1,
+	dpi = 96.0,
+
+	-- Scrollback
+	scrollback_lines = 3500,
+
+	-- enable_wayland = false,
 }

@@ -33,6 +33,8 @@ if type -q z
     alias cd 'z'
 end
 
+# abbr -a -g spotify 'LD_PRELOAD=/home/titin/repos/spotifywm/spotifywm.so spotify'
+
 # Abbr
 
 # git 

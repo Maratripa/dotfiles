@@ -6,7 +6,7 @@ local apps = {
         editor = "code-insiders",
         browser = "firefox-developer-edition",
         files = "thunar",
-        launcher = "./.config/rofi/scripts/launcher_t1",
+        launcher = "rofi -no-config -show drun -theme ~/.config/rofi/launcher.rasi",
     },
 
     run_on_start_up = {
