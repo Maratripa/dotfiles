@@ -18,8 +18,3 @@ require("module.auto-start")
 require("configuration.client")
 require("configuration.tags")
 _G.root.keys(require("configuration.keys.global"))
-
-
--- Garbage collection
-collectgarbage("setpause", 110)
-collectgarbage("setstepmul", 1000)

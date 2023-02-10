@@ -1,40 +1,5 @@
 local awful = require('awful')
-local icons = require('theme.icons')
-local apps = require('configuration.apps')
-
-local tags = {
-    {
-        icon = icons.firefox,
-        type = 'firefox',
-        -- defaultApp = apps.default.browser,
-        screen = 1
-    }, {
-        icon = icons.code,
-        type = 'code',
-        -- defaultApp = apps.default.editor,
-        screen = 1
-    }, {
-        icon = icons.folder,
-        type = 'files',
-        -- defaultApp = apps.default.files,
-        screen = 1
-    }, {
-        icon = icons.console,
-        type = 'console',
-        -- defaultApp = apps.default.terminal,
-        screen = 1
-    }, {
-        icon = icons.social,
-        type = 'social',
-        -- defaultApp = apps.default.social,
-        screen = 1
-    }, {
-        icon = icons.lab,
-        type = 'any',
-        -- defaultApp = apps.default.rofi,
-        screen = 1
-    }
-}
+local beautiful = require('beautiful')
 
 awful.layout.layouts = {
     awful.layout.suit.tile,
@@ -42,16 +7,14 @@ awful.layout.layouts = {
     awful.layout.suit.floating
 }
 
-awful.screen.connect_for_each_screen(function (s)
-    for i, tag in pairs(tags) do
+awful.screen.connect_for_each_screen(function(s)
+    for i = 1, 5 do
         awful.tag.add(
             i,
             {
-                icon = tag.icon,
-                icon_only = true,
                 layout = awful.layout.suit.tile,
                 gap_single_client = true,
-                gap = 4,
+                gap = beautiful.useless_gap,
                 screen = s,
                 selected = i == 1
             }

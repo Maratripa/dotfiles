@@ -53,12 +53,12 @@ local function make_powerbutton(opts)
         opts = {
             widget = default_widget,
             onclick = function() end,
-            bg = beautiful.bg.surface0,
+            bg = beautiful.bg.crust,
         }
     end
 
     -- @DEFALT_VALUE -> key = 'bg'
-    opts.bg = opts.bg and opts.bg or beautiful.bg.surface0
+    opts.bg = opts.bg and opts.bg or beautiful.bg.crust
 
     local call_widget = function()
         local icon_size = dpi(60)
@@ -86,8 +86,8 @@ local function make_powerbutton(opts)
     }
 
     -- add hover suppoert just when background is surface0
-    if opts.bg == beautiful.bg.surface0 then
-        helpers.add_hover(button, beautiful.bg.surface0, beautiful.bg.mantle)
+    if opts.bg == beautiful.bg.crust then
+        helpers.add_hover(button, beautiful.bg.crust, beautiful.bg.mantle)
     end
 
     button:add_button(awful.button({}, 1, function()
@@ -256,7 +256,7 @@ awful.screen.connect_for_each_screen(function(s)
         type = "splash",
         visible = false,
         ontop = true,
-        bg = beautiful.bg.base .. "80",
+        bg = beautiful.bg.crust .. "80",
         height = s.geometry.height,
         width = s.geometry.width,
         x = s.geometry.x,

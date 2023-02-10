@@ -25,7 +25,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
         valign = 'center',
         halign = 'center',
         widget = wibox.widget.imagebox,
-    }, beautiful.bg.base, beautiful.bg.mantle)
+    }, beautiful.bg.crust, beautiful.bg.mantle)
 
     tray_dispatcher:add_button(awful.button({}, 1, function()
         awesome.emit_signal("tray::toggle")
@@ -48,87 +48,67 @@ screen.connect_signal("request::desktop_decoration", function(s)
         halign = "center",
         valign = "center",
         widget = wibox.widget.imagebox,
-    }, beautiful.bg.base, beautiful.bg.mantle)
+    }, beautiful.bg.crust, beautiful.bg.mantle)
 
     powerbutton:add_button(awful.button({}, 1, function()
         awesome.emit_signal("powermenu::toggle")
     end))
 
-    local clockbutton = helpers.mkbtn(clock_widget, beautiful.bg.base, beautiful.bg.mantle)
+    local clockbutton = helpers.mkbtn(clock_widget, beautiful.bg.crust, beautiful.bg.mantle)
 
     clockbutton:add_button(awful.button({}, 1, function()
         awesome.emit_signal("calendar::toggle")
     end))
 
-    local function mkcontainer(template)
-        return wibox.widget {
-            template,
-            left = dpi(8),
-            right = dpi(8),
-            top = dpi(6),
-            bottom = dpi(6),
-            widget = wibox.container.margin,
-        }
-    end
-
     s.mywibox = awful.wibar {
         position = "top",
         screen = s,
-        width = s.geometry.width - dpi(14),
-        height = dpi(40),
+        width = s.geometry.width - dpi(20),
+        height = dpi(50),
         shape = gears.shape.rectangle,
         margins = {
-            top = dpi(7),
-            left = dpi(7),
-            right = dpi(7),
+            top = dpi(10),
+            left = dpi(10),
+            right = dpi(10),
         },
     }
-
     s.mywibox:setup {
         {
             {
-                layout = wibox.layout.align.horizontal,
                 {
-                    {
-                        mkcontainer {
-                            taglist,
-                            spacing = dpi(8),
-                            layout = wibox.layout.fixed.horizontal,
-                        },
-                        left = dpi(4),
-                        widget = wibox.container.margin,
-                    },
-                    layout = wibox.layout.fixed.horizontal,
+                    taglist,
+                    widget = wibox.container.margin,
+                    left = dpi(15),
                 },
-                nil,
-                {
-                    mkcontainer {
-                        {
-                            tray_dispatcher,
-                            right = dpi(5),
-                            widget = wibox.container.margin,
-                        },
-                        battery_widget,
-                        {
-                            clockbutton,
-                            valign = "center",
-                            widget = wibox.container.margin,
-                        },
-                        powerbutton,
-                        spacing = dpi(8),
-                        layout = wibox.layout.fixed.horizontal,
-                    },
-                    layout = wibox.layout.fixed.horizontal,
-                },
+                layout = wibox.layout.fixed.horizontal,
             },
-            layout = wibox.layout.stack
+            {
+                {
+                    clock_widget,
+                    valign = 'center',
+                    widget = wibox.container.place,
+                },
+                layout = wibox.layout.fixed.horizontal,
+            },
+            {
+                {
+                    tray_dispatcher,
+                    right = dpi(5),
+                    widget = wibox.container.margin,
+                },
+                battery_widget,
+                spacing = dpi(8),
+                layout = wibox.layout.fixed.horizontal,
+            },
+            layout = wibox.layout.align.horizontal,
+            expand = 'none',
         },
-        opacity = 1,
-        bg = beautiful.bg.base,
         widget = wibox.container.background,
+        bg = beautiful.bg.crust,
+        forced_height = s.mywibox.height,
     }
 
     s.mywibox:struts {
-        top = s.mywibox.height + dpi(7),
+        top = s.mywibox.height + dpi(10),
     }
 end)

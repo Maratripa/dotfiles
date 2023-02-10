@@ -14,7 +14,7 @@ scheme.background = '#11111b'
 
 return {
 	-- OpenGl for GPU acceleration, Software for CPU
-	-- front_end = 'OpenGL',
+	front_end = 'OpenGL',
 	-- Appearance
 	enable_tab_bar = false,
 	window_padding = window_padding(20),

@@ -9,6 +9,13 @@ function exe () {
     fi
 }
 
+sleep 1
+killall xdg-desktop-portal-hyprland
+killall xdg-desktop-portal-wlr
+killall xdg-desktop-portal
+sleep 1
+exe /usr/lib/xdg-desktop-portal
+
 exe ~/.xrandr
 exe polkit-dumb-agent
 exe picom --config ~/.config/picom/picom.conf -b

@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+
+PLAYER="playerctld"
+
+PLAYER_STATUS=$(playerctl --player=$PLAYER status 2> /dev/null)
+EXIT_CODE=$?
+
+if [ $EXIT_CODE -eq 0 ]; then
+  STATUS=$PLAYER_STATUS
+else
+  STATUS="Nothing is playing"
+fi
+
+if [[ $1 == "--icon" ]]; then
+  if [[ $STATUS == "Playing" ]]; then
+	echo ""
+  else
+	echo ""
+  fi
+fi

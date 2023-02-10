@@ -18,7 +18,7 @@ local update_tags = function(self, index, s)
 
     if found then
         markup_role.image = gears.color.recolor_image(
-            beautiful.selected_tag_format,
+            beautiful.normal_tag_format,
             beautiful.taglist_fg_focus
         )
     else
@@ -30,7 +30,7 @@ local update_tags = function(self, index, s)
             for _, t in ipairs(c:tags()) do
                 if t.index == index then
                     markup_role.image = gears.color.recolor_image(
-                        beautiful.occupied_tag_format,
+                        beautiful.normal_tag_format,
                         beautiful.taglist_fg_occupied
                     )
                 end
@@ -53,15 +53,15 @@ local get_taglist = function(s)
             awful.util.table.join(
                 awful.button({}, 1, function(t)
                     t:view_only()
-                    end
+                end
                 ),
                 awful.button({}, 4, function(t)
                     awful.tag.viewprev(t.screen)
-                    end
+                end
                 ),
                 awful.button({}, 5, function(t)
                     awful.tag.viewnext(t.screen)
-                    end
+                end
                 )
             ),
         },
@@ -81,12 +81,12 @@ local get_taglist = function(s)
                 shape = gears.shape.circle,
             },
             id = "",
-            right = 10,
+            right = 11,
             widget = wibox.container.margin,
-            update_callback = function (self, _, index)
+            update_callback = function(self, _, index)
                 update_tags(self, index, s)
             end,
-            create_callback = function (self, _, index)
+            create_callback = function(self, _, index)
                 update_tags(self, index, s)
             end,
         },

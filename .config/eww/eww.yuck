@@ -1,0 +1,91 @@
+;; Profile
+(defvar NAME "Titin")
+(defvar IMAGE "/home/titin/.config/eww/pfp.jpg")
+
+;; Uptime
+(defpoll UPTIME :interval "60s" `uptime -p`)
+
+;; Music
+(deflisten SONG :initial ""
+	`playerctl --follow metadata --format {{title}}`)
+(deflisten ARTIST :initial ""
+	`playerctl --follow metadata --format {{artist}}`)
+(deflisten COVER :initial ""
+	`playerctl --follow metadata --format {{mpris:artUrl}}`)
+(defpoll music-icon :interval "1s" "scripts/music --icon")
+
+;; Wifi
+(defpoll wifi-status :interval "1s" "scripts/wifi --status")
+(defpoll wifi-icon :interval "1s" "scripts/wifi --icon")
+
+;; Bluetooth
+(defpoll bluetooth-icon :interval "1s" "scripts/bluetooth --icon")
+(defpoll bluetooth-class :interval "1s" "scripts/bluetooth --class")
+
+;; Widgets
+
+;; Profile
+(defwidget profile []
+	(box :class "profile-box" :orientation "horizontal" :space-evenly "false" :vexpand "false" :hexpand "false" :spacing 10
+			  (box :class "profile-image" :space-evenly "false" :style "background-image: url('${IMAGE}');")
+		 (box :orientation "vertical" :space-evenly "false" :valign "center"
+			  (label :class "profile-title" :halign "start" :text "Hi, ${NAME}!")
+			  (label :halign "start" :text "${UPTIME}"))
+		 (button :class "power-button" "")))
+
+;; Notifications
+(defwidget notifications []
+	(box :class "notif-box" :orientation "vertical" :space-evenly "false"
+		 (label :class "notif-panel-title" :halign "start" :text "Notification center")
+		 (scroll :vscroll "true"
+				 (box ""))))
+
+;; Volume and Brightness control
+(defwidget vb_controls []
+	(box :class "vb-box" :orientation "vertical"
+		 (box :orientation "horizontal"
+			  (scale :min 0 :max 100 :orientation "horizontal"))
+		 (box :orientation "horizontal"
+			  (scale :min 0 :max 100 :orientation "horizontal"))))
+
+;; Network and media controls
+(defwidget nm_controls []
+	(box :orientation "horizontal" :spacing 10 :space-evenly "false"
+		 (box :orientation "vertical" :spacing 10
+			  (box :class "wifi-box" :orientation "horizontal" :space-evenly "false"
+				   (button :class "wifi-button ${wifi-status != "Disconnected" ? "wifi-button-on" : "wifi-button-off"}" :onclick "scripts/wifi --toggle" "${wifi-icon}")
+				   (label :class "separator" :text "|")
+				   (button :class "wifi-arrow-button ${wifi-status != "Disconnected" ? "wifi-button-on" : "wifi-button-off"}" ""))
+			  (box :orientation "horizontal" :space-evenly "false"
+				   (button :class "bluetooth-button ${bluetooth-class != "off" ? "bluetooth-button-on" : "bluetooth-button-off"}" :onclick "scripts/bluetooth --toggle" "${bluetooth-icon}")
+				   (label :class "separator" :text "|")
+				   (button :class "bluetooth-arrow-button ${bluetooth-class != "off" ? "bluetooth-button-on" : "bluetooth-button-off"}" :onclick "scripts/apps --bluetooth" "")))
+		 (box :class "music-box" :orientation "horizontal" :spacing 10 :space-evenly "false"
+			  (box :class "album-cover" :space-evenly "true" :style "background-image: url('${COVER}');")
+			  (box :class "music-info" :orientation "vertical" :space-evenly "false" :spacing 8
+				   (label :wrap "true" :class "song-name" :halign "center" :text "${SONG}")
+				   (box :orientation "horizontal" :spacing 5
+						(button :class "media-button" :onclick "playerctl previous" "")
+						(button :class "media-button" :onclick "playerctl play-pause" "${music-icon}")
+						(button :class "media-button" :onclick "playerctl next" ""))))))
+
+;; Global state widget
+(defwidget status_widget []
+	(box :class "main" :orientation "vertical" :spacing 10 :space-evenly "false"
+		 (profile)
+		 (notifications)
+		 (vb_controls)
+		 (nm_controls)))
+
+
+;; Windows
+(defwindow status
+	:monitor 0
+	:geometry (geometry :x "-10px"
+						:y "70px"
+						:width "400px"
+						:height "700px"
+						:anchor "top right")
+	:stacking "fg"
+	(status_widget))
+

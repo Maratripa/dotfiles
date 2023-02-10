@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+if [[ $1 == "--bluetooth" ]]; then
+	cd || return
+	blueman-manager
+fi
