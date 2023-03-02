@@ -58,6 +58,37 @@
   padding: 10px;
 }
 
+slider {
+  all: unset;
+  background: transparent;
+}
+
+.volume-slider {
+  margin-bottom: 20px;
+}
+
+.volume-slider trough {
+  background-color: #11111b;
+  border-radius: 15px;
+}
+
+.volume-slider highlight {
+  padding: 7.5px;
+  background-color: #B4BEFE;
+  border-radius: 15px;
+}
+
+.brightness-slider trough {
+  background-color: #11111b;
+  border-radius: 15px;
+}
+
+.brightness-slider highlight {
+  padding: 7.5px;
+  background-color: #B4BEFE;
+  border-radius: 15px;
+}
+
 .wifi-box {
   border-radius: 100px;
 }

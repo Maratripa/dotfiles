@@ -22,6 +22,9 @@
 (defpoll bluetooth-icon :interval "1s" "scripts/bluetooth --icon")
 (defpoll bluetooth-class :interval "1s" "scripts/bluetooth --class")
 
+;; Sliders
+(defpoll volume-slider-value :interval "500ms" "scripts/volume-slider")
+
 ;; Widgets
 
 ;; Profile
@@ -42,11 +45,17 @@
 
 ;; Volume and Brightness control
 (defwidget vb_controls []
-	(box :class "vb-box" :orientation "vertical"
+	(box :class "vb-box" :orientation "vertical" :space-evenly "false"
 		 (box :orientation "horizontal"
-			  (scale :min 0 :max 100 :orientation "horizontal"))
+			  (scale :class "volume-slider"
+					:value "${volume-slider-value}" 
+					:marks "true" 
+					:min 0 
+					:max 100 
+					:orientation "horizontal"
+					:onchange "amixer sset Master {}%"))
 		 (box :orientation "horizontal"
-			  (scale :min 0 :max 100 :orientation "horizontal"))))
+			  (scale :class "brightness-slider" :min 0 :max 100 :orientation "horizontal"))))
 
 ;; Network and media controls
 (defwidget nm_controls []
@@ -84,7 +93,7 @@
 	:geometry (geometry :x "-10px"
 						:y "70px"
 						:width "400px"
-						:height "700px"
+						;:height "700px"
 						:anchor "top right")
 	:stacking "fg"
 	(status_widget))
