@@ -1,0 +1,33 @@
+theme = "catppuccin_mocha_dark"
+
+[editor]
+bufferline = "multiple"
+color-modes = true
+line-number = "relative"
+
+[editor.soft-wrap]
+enable = true
+
+[editor.statusline]
+left = ["mode", "spinner", "file-name"]
+center = []
+right = ["file-type", "diagnostics", "selections", "position", "total-line-numbers", "file-encoding"]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "block"
+
+[editor.lsp]
+display-signature-help-docs = false
+display-inlay-hints = true
+
+[keys.normal]
+"Ñ" = "command_mode"
+
+[keys.normal.space]
+f = "file_picker_in_current_directory"
+F = "file_picker"
