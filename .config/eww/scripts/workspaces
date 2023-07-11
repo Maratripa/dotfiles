@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+MONITOR=$1
+PRIMARY=$(xrandr | grep primary | awk -F- '{ print $1 }')
+
+./workspaces.py $PRIMARY $MONITOR

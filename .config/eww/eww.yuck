@@ -1,0 +1,107 @@
+(include "./status.yuck")
+
+(defpoll time 
+  :interval "5s" 
+  :initial `date +'{"hour":"%H","min":"%M"}'`
+  `date +'{"hour":"%H","min":"%M"}'`)
+
+(defpoll net
+  :interval "30s"
+  :initial `N/A`
+  `nmcli -t -f SIGNAL,ACTIVE device wifi \
+    | awk -F':' '{if($2=="yes")print$1}'`)
+
+(defwidget _network [strength offline excellent good okay slow]
+  (box
+    :class "net-box"
+    :space-evenly false
+    :spacing 8
+    (label
+      :text {
+        strength == "" ? offline :
+        strength < 26 ? slow :
+        strength < 51 ? okay :
+        strength < 76 ? good :
+        excellent
+      }
+    )
+  )
+)
+
+(defwidget _battery [battery status one two three four five six seven charge]
+  (box
+    :class "bat-box"
+    :space-evenly false
+    :spacing 8
+    (label
+      :text {
+        status == 'Charging' ? charge :
+        battery < 15 ? seven :
+        battery < 30 ? six :
+        battery < 45 ? five :
+        battery < 60 ? four :
+        battery < 75 ? three :
+        battery < 100 ? two :
+        one
+      }
+    )
+  )
+)
+
+(defwidget _bar []
+  (centerbox :orientation "h"
+    (_workspaces)
+    (_clock)
+    (_stats)
+  )
+)
+
+(defwidget _workspaces []
+  (box :valign "center" :space-evenly true :halign "start" :spacing 10
+    (button :onclick "wmctrl -s 0" 1)
+    (button :onclick "wmctrl -s 1" 2)
+    (button :onclick "wmctrl -s 2" 3)
+    (button :onclick "wmctrl -s 3" 4)
+    (button :onclick "wmctrl -s 4" 5)
+  )
+)
+
+(defwidget _clock []
+  (box
+    (label
+      :text "${time.hour}:${time.min}"
+    )
+  )
+)
+
+(defwidget _stats []
+  (box :valign "center" :space-evenly false :halign "end" :spacing 15
+    (_battery 
+      :status {EWW_BATTERY.BAT0.status}
+      :battery {EWW_BATTERY.BAT0.capacity}
+      :charge "" :one "" :two "" :three "" :four ""
+      :five "" :six "" :seven ""
+    )
+    (_network
+      :strength net
+      :offline "" :excellent "" :good ""
+      :okay "" :slow ""
+    )
+  )
+)
+
+(defwindow topbar
+  :monitor "eDP-1"
+  :geometry (geometry 
+    :x "0%"
+    :y "20px"
+    :width "90%"
+    :height "30px"
+    :anchor "top center"
+  )
+  :stacking "fg"
+  :reserve (struts :distance "40px" :side "top")
+  :windowtype "dock"
+  :wm-ignore true
+  (_bar)
+)

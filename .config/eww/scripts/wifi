@@ -1,0 +1,45 @@
+#!/usr/bin/bash
+
+STATUS=$(nmcli | grep wlan0 | awk 'FNR==1' | awk '{print $2}')
+SSID=$(iwgetid | awk -F '"' '{print $2}')
+STRENGTH=$(awk 'NR==3 {printf("%.0f",$3*10/7)}' /proc/net/wireless)
+
+toggle() {
+	if [[ $STATUS == "connected" ]]; then
+		nmcli radio wifi off
+	else
+		nmcli radio wifi on
+	fi
+}
+
+status() {
+	if [[ $STATUS == "connected" ]]; then
+		echo "$SSID"
+	else
+		echo Disconnected
+fi
+}
+
+icon() {
+	if [[ $STRENGTH -ge "80" ]]; then
+		echo "󰤨"
+	elif [[ "$STRENGTH" -ge "60" ]]; then
+		echo "󰤥"
+	elif [[ "$STRENGTH" -ge "40" ]]; then
+		echo "󰤢"
+	elif [[ "$STRENGTH" -ge "20" ]]; then
+		echo "󰤟"
+	elif [[ "$STRENGTH" -ge "0" ]]; then
+		echo "󰤯"
+	else
+		echo "󰤮"
+	fi
+}
+
+if [[ $1 == "--toggle" ]]; then
+	toggle
+elif [[ $1 == "--status" ]]; then
+	status
+elif [[ $1 == "--icon" ]]; then
+	icon
+fi
