@@ -1,0 +1,16 @@
+#!/bin/bash
+
+envy=$(envycontrol --query)
+
+if [[ "$envy" == *"nvidia" ]]; then
+	eout="eDP-1-1"
+	out="DP-0"
+elif [[ "$envy" == *"intel" ]]; then
+	eout="eDP-1"
+	out="DP-1-3"
+else
+	eout="eDP-1"
+	out="DP-1-0"
+fi
+
+xrandr --output $out --auto --primary --output $eout --auto --right-of $out
