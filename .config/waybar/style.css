@@ -1,0 +1,136 @@
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: Iosevka Nerd Font, monospace;
+    font-size: 14px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    font-weight: bold;
+}
+
+window#waybar {
+    background: rgba(43, 48, 59, 0);
+    color: #cdd6f4;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+tooltip {
+    background: #1e1e2e;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #11111b;
+}
+
+#workspaces button {
+    padding: 5px;
+    color: #313244;
+    margin-right: 5px;
+}
+
+#workspaces button.active {
+    color: #a6adc8;
+}
+
+#workspaces button:hover {
+    background: #11111b;
+    color: #cdd6f4;
+    border-radius: 10px;
+}
+
+#workspaces button.focused {
+    background: #eba0ac;
+    color: #a6adc8;
+    border-radius: 10px;
+}
+
+#workspaces button.urgent {
+    background: #a6e3a1;
+    color: #11111b;
+    border-radius: 10px;
+}
+
+#custom-language,
+#custom-updates,
+#clock,
+#battery,
+#pulseaudio,
+#tray,
+#window,
+#network,
+#battery,
+#workspaces {
+    padding: 0 10px;
+    background: #1e1e2e;
+    margin: 3px 0px;
+    margin-top: 10px;
+    border: 1px solid #181825;
+}
+
+#clock {
+    color: #fab387;
+    border-radius: 10px 0 0 10px;
+    margin-left: 5px;
+    border-right: 0;
+}
+
+#tray {
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#workspaces {
+    background: #1e1e2e;
+    border-radius: 10px;
+    margin-left: 10px;
+    padding-right: 0;
+    padding-left: 5px;
+}
+
+#custom-language {
+    color: #f38ba8;
+    border-left: 0;
+    border-right: 0;
+}
+
+#custom-updates {
+    color: #f5c2e7;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 10px 0 0 10px;
+}
+
+#window {
+    border-radius: 10px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+#clock {
+    color: #fab387;
+    border-radius: 10px 0 0 10px;
+    margin-left: 5px;
+    border-right: 0;
+}
+
+#network {
+    color: #f9e2af;
+    border-left: 0;
+    border-right: 0;
+}
+
+#pulseaudio {
+    color: #89b4fa;
+    border-left: 0;
+    border-right: 0;
+}
+
+#battery {
+    color: #a6e3a1;
+    border-radius: 0 10px 10px 0;
+    margin-right: 10px;
+    border-left: 0;
+}
