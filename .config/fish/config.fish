@@ -30,27 +30,29 @@ zoxide init fish | source
 # Alias
 
 # ls -> exa
-if type -q exa
-    alias l 'exa -1 --icons'
-    alias la 'exa -l -a -h --icons --classify --group-directories-first --no-user'
-    alias ld 'exa -l -a -h --list-dirs --no-user'
-    alias ll 'exa -l -a -h --git --no-user'
-    alias lt='exa -a --no-user --tree --level'
+if type -q eza
+    alias l 'eza --icons --group-directories-first'
+    alias la 'eza -l -a -h --icons -F --group-directories-first --no-user'
+    alias ld 'eza -l -a -h --list-dirs --no-user'
+    alias ll 'eza -1 --icons --group-directories-first'
+    alias lr 'eza -R -L'
+    alias lt 'eza -a --no-user --tree --level'
 end
 
+# cat -> bat
 if type -q bat
     alias cat 'bat'
 end
 
+# Use btop
 if type -q btm
     alias btm 'btm --battery'
 end
 
+# cd -> zoxide
 if type -q z
     alias cd 'z'
 end
-
-# abbr -a -g spotify 'LD_PRELOAD=/home/titin/repos/spotifywm/spotifywm.so spotify'
 
 # Abbr
 
@@ -60,5 +62,3 @@ abbr -a -g gst 'git status -sb'
 # mkdir
 abbr -a -g mkdir "mkdir -pv"
 
-# ls
-abbr -a -g ls "exa -1 --icons"
