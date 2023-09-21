@@ -3,8 +3,8 @@ local menubar = require("menubar")
 local apps = {
     default = {
         terminal = "wezterm",
-        editor = "code-insiders",
-        browser = "firefox",
+        editor = "vscodium",
+        browser = "floorp",
         files = "thunar",
         launcher = "rofi -no-config -show drun -theme ~/.config/rofi/launcher.rasi",
     },
