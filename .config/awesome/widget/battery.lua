@@ -14,14 +14,14 @@ local watch = require("awful.widget.watch")
 local wibox = require("wibox")
 local gfs = require("gears.filesystem")
 local gears = require('gears')
-local dpi = require('beautiful').xresources.apply_dpi
+-- local dpi = require('beautiful').xresources.apply_dpi
 
 -- acpi sample outputs
 -- Battery 0: Discharging, 75%, 01:51:38 remaining
 -- Battery 0: Charging, 53%, 00:57:43 until charged
 
 local HOME = os.getenv("HOME")
-local WIDGET_DIR = HOME .. '/.config/awesome/widget/'
+-- local WIDGET_DIR = HOME .. '/.config/awesome/widget/'
 
 local battery_widget = {}
 local function worker(user_args)
@@ -41,7 +41,7 @@ local function worker(user_args)
     local warning_msg_title = args.warning_msg_title or 'Huston, we have a problem'
     local warning_msg_text = args.warning_msg_text or 'Battery is dying'
     local warning_msg_position = args.warning_msg_position or 'top_right'
-    local warning_msg_icon = args.warning_msg_icon or WIDGET_DIR .. '/spaceman.jpg'
+    -- local warning_msg_icon = args.warning_msg_icon or WIDGET_DIR .. '/spaceman.jpg'
     local enable_battery_warning = args.enable_battery_warning
     if enable_battery_warning == nil then
         enable_battery_warning = true
@@ -81,7 +81,7 @@ local function worker(user_args)
     -- Popup with battery info
     -- One way of creating a pop-up notification - naughty.notify
     local notification
-    local function show_battery_status(batteryType)
+    local function show_battery_status(_batteryType)
         awful.spawn.easy_async("acpi | grep 'Battery 0'",
             function(stdout, _, _, _)
                 naughty.destroy(notification)

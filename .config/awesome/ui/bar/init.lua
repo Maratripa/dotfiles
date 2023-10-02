@@ -28,7 +28,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
         valign = 'center',
         halign = 'center',
         widget = wibox.widget.imagebox,
-    }, beautiful.bg.crust, beautiful.bg.mantle)
+    }, beautiful.bg_normal, "#181825")
 
     tray_dispatcher:add_button(awful.button({}, 1, function()
         awesome.emit_signal("tray::toggle")
@@ -53,11 +53,11 @@ screen.connect_signal("request::desktop_decoration", function(s)
             right = dpi(10),
             widget = wibox.container.margin
         },
-        bg = beautiful.bg.surface0,
-        fg = beautiful.fg.text,
+        bg = "#313244",
+        fg = beautiful.fg_normal,
         widget = wibox.container.background,
         shape = helpers.mkroundedrect(15),
-    }, beautiful.bg.surface0, beautiful.bg.base, dpi(15))
+    }, "#313244", "#1e1e2e", dpi(15))
 
     -- menubutton:add_button(awful.button({}, 1, function()
     -- end))
@@ -69,13 +69,13 @@ screen.connect_signal("request::desktop_decoration", function(s)
         halign = "center",
         valign = "center",
         widget = wibox.widget.imagebox,
-    }, beautiful.bg.crust, beautiful.bg.mantle)
+    }, beautiful.bg_normal, "#181825")
 
     powerbutton:add_button(awful.button({}, 1, function()
         awesome.emit_signal("powermenu::toggle")
     end))
 
-    local clockbutton = helpers.mkbtn(clock_widget, beautiful.bg.crust, beautiful.bg.mantle)
+    local clockbutton = helpers.mkbtn(clock_widget, beautiful.bg_normal, "#181825")
 
     clockbutton:add_button(awful.button({}, 1, function()
         awesome.emit_signal("calendar::toggle")
@@ -140,7 +140,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
             expand = 'none',
         },
         widget = wibox.container.background,
-        bg = beautiful.bg.crust,
+        bg = beautiful.bg_normal,
         forced_height = s.mywibox.height,
     }
 

@@ -45,7 +45,7 @@ awful.screen.connect_for_each_screen(function(s)
             margins = dpi(12),
             widget = wibox.container.margin,
         },
-        bg = beautiful.bg.base,
+        bg = beautiful.bg_normal,
         fg = beautiful.fg_normal,
         widget = wibox.container.background,
         shape = gears.shape.rounded_rect
@@ -56,7 +56,7 @@ awful.screen.connect_for_each_screen(function(s)
         screen = s,
         visible = false,
         ontop = true,
-        bg = beautiful.bg.base,
+        bg = beautiful.bg_normal,
         fg = beautiful.fg_normal,
         minimum_width = dpi(200),
         minimum_height = dpi(150),

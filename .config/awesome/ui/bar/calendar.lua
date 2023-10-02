@@ -43,7 +43,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
     styles.normal = { shape = rounded_shape(5) }
     styles.focus = {
-        fg_color = beautiful.white,
+        fg_color = beautiful.fg_normal,
         bg_color = beautiful.colors.green .. "b0",
         markup = function(t) return "<b>" .. t .. "</b>" end,
         shape = circle(13),
@@ -53,7 +53,7 @@ awful.screen.connect_for_each_screen(function(s)
         markup = function(t) return "<b>" .. t .. "</b>" end,
     }
     styles.weekday = {
-        fg_color = beautiful.colors.lavender,
+        fg_color = beautiful.colors.blue_alt,
     }
 
     local function decorate_cell(widget, flag, date)
@@ -81,7 +81,7 @@ awful.screen.connect_for_each_screen(function(s)
             month = (date.month or 1),
             day = (date.day or 1)
         }
-        local weekday = tonumber(os.date("%w", os.time(d)))
+        -- local weekday = tonumber(os.date("%w", os.time(d)))
         local ret = wibox.widget {
             {
                 widget,
@@ -91,10 +91,10 @@ awful.screen.connect_for_each_screen(function(s)
             },
             align = "center",
             shape = props.shape,
-            border_color = props.border_color or beautiful.bg.base,
+            border_color = props.border_color or beautiful.bg_normal,
             border_width = props.border_width or 0,
             fg = props.fg_color or "#ffffff",
-            bg = props.bg_color or beautiful.bg.mantle,
+            bg = props.bg_color or beautiful.bg_normal,
             widget = wibox.container.background,
         }
 
@@ -116,7 +116,7 @@ awful.screen.connect_for_each_screen(function(s)
         screen = s,
         visible = false,
         ontop = true,
-        bg = beautiful.bg.base,
+        bg = beautiful.bg_normal,
         fg = beautiful.fg_normal,
         minimum_width = dpi(150),
         minimum_height = dpi(150),

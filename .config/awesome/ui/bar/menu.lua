@@ -2,7 +2,7 @@
 local wibox = require 'wibox'
 local awful = require 'awful'
 local beautiful = require 'beautiful'
-local gears = require 'gears'
+-- local gears = require 'gears'
 local helpers = require 'helpers'
 
 local dpi = beautiful.xresources.apply_dpi
@@ -60,8 +60,8 @@ awful.screen.connect_for_each_screen(function(s)
             margins = dpi(10),
             widget = wibox.container.margin,
         },
-        bg = beautiful.bg.surface0,
-        fg = beautiful.fg.text,
+        bg = "#313244",
+        fg = beautiful.fg_normal,
         widget = wibox.container.background,
         shape = helpers.mkroundedrect(15),
     }

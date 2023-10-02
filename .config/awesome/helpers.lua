@@ -9,7 +9,7 @@ local dpi = beautiful.xresources.apply_dpi
 local helpers = {}
 
 helpers.get_colorized_markup = function(content, fg)
-    fg = fg or beautiful.colors.lavender
+    fg = fg or beautiful.colors.color12
     content = content or ""
 
     return "<span foreground=\"" .. fg .. "\">" .. content .. "</span>"
@@ -38,6 +38,12 @@ helpers.mkroundedrect = function(radius)
     radius = radius or dpi(10)
     return function(cr, w, h)
         return gears.shape.rounded_rect(cr, w, h, radius)
+    end
+end
+
+helpers.rrect = function(radius)
+    return function(cr, width, height)
+        gears.shape.rounded_rect(cr, width, height, radius)
     end
 end
 

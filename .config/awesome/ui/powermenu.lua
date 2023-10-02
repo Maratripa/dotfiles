@@ -18,7 +18,7 @@ awful.spawn.easy_async_with_shell("whoami", function(whoami)
     username:set_markup_silently("Hey " ..
         helpers.get_colorized_markup(helpers.capitalize(
             helpers.trim(whoami)
-        ), beautiful.colors.lavender)
+        ), beautiful.colors.blue_alt)
         .. '!')
 end)
 
@@ -53,12 +53,12 @@ local function make_powerbutton(opts)
         opts = {
             widget = default_widget,
             onclick = function() end,
-            bg = beautiful.bg.crust,
+            bg = beautiful.bg_normal,
         }
     end
 
     -- @DEFALT_VALUE -> key = 'bg'
-    opts.bg = opts.bg and opts.bg or beautiful.bg.crust
+    opts.bg = opts.bg and opts.bg or beautiful.bg_normal
 
     local call_widget = function()
         local icon_size = dpi(60)
@@ -86,8 +86,8 @@ local function make_powerbutton(opts)
     }
 
     -- add hover suppoert just when background is surface0
-    if opts.bg == beautiful.bg.crust then
-        helpers.add_hover(button, beautiful.bg.crust, beautiful.bg.mantle)
+    if opts.bg == beautiful.bg_normal then
+        helpers.add_hover(button, beautiful.bg_normal, "#181825")
     end
 
     button:add_button(awful.button({}, 1, function()
@@ -158,7 +158,7 @@ local powerbuttons = wibox.widget {
                     margins = dpi(4),
                     widget = wibox.container.margin,
                 },
-                fg = beautiful.colors.mauve,
+                fg = beautiful.colors.purple,
                 widget = wibox.container.background,
             }
         end,
@@ -256,7 +256,7 @@ awful.screen.connect_for_each_screen(function(s)
         type = "splash",
         visible = false,
         ontop = true,
-        bg = beautiful.bg.crust .. "80",
+        bg = beautiful.bg_normal .. "80",
         height = s.geometry.height,
         width = s.geometry.width,
         x = s.geometry.x,

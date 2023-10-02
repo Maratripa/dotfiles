@@ -4,7 +4,7 @@ local textbox = require('wibox.widget.textbox')
 local button = require('awful.button')
 local widget_base = require('wibox.widget.base')
 local gdebug = require('gears.debug')
-local beautiful = require('beautiful')
+-- local beautiful = require('beautiful')
 
 --- Keyboard Layout widget
 local keyboardlayout = { mt = {} }
@@ -196,7 +196,7 @@ function keyboardlayout.get_groups_from_group_names(group_names)
 
     -- Split 'group_names' into 'tokens'. the separator is '+'.
     local tokens = {}
-    string.gsub(group_names, '[^+]+', function(match)
+    local _ = string.gsub(group_names, '[^+]+', function(match)
         table.insert(tokens, match)
     end)
 

@@ -10,11 +10,15 @@ beautiful.init(require("theme"))
 require("ui")
 
 -- Init all modules
-require("module.notifications")
 require("module.set-wallpaper")
 require("module.auto-start")
 
 -- Setup all configurations
+require("configuration.notifications")
 require("configuration.client")
 require("configuration.tags")
+
+-- Init notifications
+require("notifications")
+
 _G.root.keys(require("configuration.keys.global"))

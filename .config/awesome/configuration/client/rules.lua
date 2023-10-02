@@ -2,6 +2,7 @@ local awful = require('awful')
 local gears = require('gears')
 local client_keys = require('configuration.client.keys')
 local client_buttons = require('configuration.client.buttons')
+local beautiful = require("beautiful")
 
 awful.rules.rules = {
     -- All clients will match this rule
@@ -23,10 +24,17 @@ awful.rules.rules = {
             class = {
                 "Blueman-manager",
                 "GitHub.UI",
-                "qemu"
+                "qemu",
+                "Nm-connection-editor",
+                "Nvidia-settings",
             },
             role = {
-                "pop-up"
+                "AlarmWindow",
+                "pop-up",
+                "GtkFileCooserDialog",
+            },
+            type = {
+                "dialog",
             }
         },
         properties = { floating = true }
@@ -41,4 +49,32 @@ awful.rules.rules = {
         rule_any = { class = { "steam" } },
         properties = { floating = true }
     },
+
+    -- Image viewers
+    {
+        rule_any = {
+            class = {
+                "feh",
+            }
+        },
+        properties = {
+            floating = true,
+        }
+    },
+
+    -- Pavucontrol
+    {
+        rule = { class = "Pavucontrol" },
+        properties = { floating = true },
+        callback = function(c)
+            c.width = 650
+            c.height = 400
+            awful.placement.top_right(c, {
+                margins = {
+                    top = beautiful.bar_height + 5,
+                    right = 5,
+                }
+            })
+        end
+    }
 }
